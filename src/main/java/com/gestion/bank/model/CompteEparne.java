@@ -1,4 +1,12 @@
 package com.gestion.bank.model;
 
-public class CompteEparne {
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("CE")
+public class CompteEparne extends Compte {
+
+    private Double Taux;
 }

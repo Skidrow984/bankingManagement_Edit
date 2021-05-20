@@ -1,4 +1,10 @@
 package com.gestion.bank.model;
 
-public class Versement {
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("V")
+public class Versement extends Operation{
 }

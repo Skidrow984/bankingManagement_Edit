@@ -5,8 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
+
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE_CPT", discriminatorType = DiscriminatorType.STRING, length = 2)
 @Table(name = "COMPTE")
 @Getter
 @Setter
@@ -22,5 +26,10 @@ public class Compte {
     @ManyToOne
     @JoinColumn(name = "idClient")
     private Client client;
+    @ManyToOne
+    @JoinColumn(name = "CODE EMPLOYE")
+    private Employe employe;
+    @OneToMany(mappedBy = "compte", fetch = FetchType.LAZY)
+    private List<Operation> operation;
 
 }

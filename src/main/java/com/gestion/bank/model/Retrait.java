@@ -1,4 +1,10 @@
 package com.gestion.bank.model;
 
-public class Retrait {
+
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
+@Entity
+@DiscriminatorValue("R")
+public class Retrait extends Operation{
 }
