@@ -1,46 +1,29 @@
 package com.gestion.bank.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "CLIENT")
+@Getter
+@Setter
+@Data
 public class Client {
 
+    @Id
+    private String idClient;
+    @Column(name = "FIRSTNAME")
     private String firstName;
+    @Column(name ="LASTNAME")
     private String lastName;
-    private String identification;
+    @Column(name ="ADRESSE")
+    private String address;
+    @OneToMany(mappedBy = "client", fetch = FetchType.LAZY)
+    private List<Compte> listComptes;
 
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getIdentification() {
-        return identification;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setIdentification(String identification) {
-        this.identification = identification;
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", identification='" + identification + '\'' +
-                '}';
-    }
 }
